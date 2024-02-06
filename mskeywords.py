@@ -10,7 +10,7 @@ def pointing(file_ms):
 
     reader = pyralysis.io.DaskMS(input_name=file_ms)
     dataset = reader.read(calculate_psf=False)
-    print("Done reading!")
+    print(">> pyralysis.io.DaskMS.read: Done reading "+file_ms)
 
     field_dataset = dataset.field.dataset
     # ref_dir = field_dataset[0].REFERENCE_DIR.compute()
@@ -35,6 +35,6 @@ def pointing(file_ms):
     #ref_dirs.append(ref_dir)
     #phase_dirs.append(phase_dir)
 
-    print(">> pointing: ref_dir = ", ref_dir)
-    print(">> pointing: phase_dir = ", phase_dir)
+    print(">> mskeywords.pointing: Reference direction = ", ref_dir)
+    print(">> mskeywords.pointing: Phase direction = ", phase_dir)
     return ref_dir, phase_dir
