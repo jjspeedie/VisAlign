@@ -10,7 +10,7 @@ def pointing(file_ms):
 
     reader = pyralysis.io.DaskMS(input_name=file_ms)
     dataset = reader.read(calculate_psf=False)
-    print("done reading")
+    print("Done reading!")
 
     field_dataset = dataset.field.dataset
     # ref_dir = field_dataset[0].REFERENCE_DIR.compute()
@@ -23,17 +23,18 @@ def pointing(file_ms):
     #print("ref_dir",ref_dir)
     ref_mask = ref_dir[:,:,0] < 0
     # if (ref_dir[:,0] < 0):
-    
+
     ref_dir[ref_mask,0] += 360.
-   
+
     phase_dir = (180. / np.pi) * field_dataset.PHASE_DIR.compute().to_numpy()
     #phase_dir = np.squeeze(phase_dir)
     phase_mask = phase_dir[:,:,0] < 0
     #if (phase_dir[:,0] < 0.):
     phase_dir[ref_mask,0] += 360.
-        
+
     #ref_dirs.append(ref_dir)
     #phase_dirs.append(phase_dir)
 
-    print("ref_dir",ref_dir)
+    print(">> pointing: ref_dir = ", ref_dir)
+    print(">> pointing: phase_dir = ", phase_dir)
     return ref_dir, phase_dir
