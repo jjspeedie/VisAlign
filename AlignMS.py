@@ -124,7 +124,7 @@ def xcorr(
         range_alpha_R=(0., 100.),
         outputdir='output_xcorr/'):
     """
-    GridScheme: set to either Pyra or tclean. 
+    GridScheme: set to either Pyra or tclean.
     """
 
     nx = imsize
@@ -499,6 +499,8 @@ def xcorr(
 
     file_bestfitparams = outputdir + 'bestfit_xcorr_wshift.npy'
     np.save(file_bestfitparams, pars)
+    file_bestfitparams_scld_errs = outputdir + 'bestfit_xcorr_wshift_scld_errs.npy'
+    np.save(file_bestfitparams_scld_errs, scld_errs)
 
     V_Bset_m = shiftvis(V_Aset, uus, vvs, m.values['alpha_R'],
                         m.values['delta_x'], m.values['delta_y'])
