@@ -528,7 +528,7 @@ def xcorr(
     punch_vis(Vamp_Bset_wfilt, du, outputdir + 'Vamp_Bset_wfilt.fits')
     punch_vis(wcommon, du, outputdir + 'w_Bset_wfilt.fits')
 
-    return file_bestfitparams, scld_errs
+    return pars, scld_errs
 
 
 #file_visAset = 'PDS70_AsetB16_cont_chi2_casarestore.ms.selfcal.statwt'
